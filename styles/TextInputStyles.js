@@ -8,7 +8,8 @@ const textInputStyles = StyleSheet.create(
             outlineColor: '#408A71',
             borderRadius: 5,
             padding: 10,
-            fontWeight: 300
+            fontWeight: 300,
+            margin: 10,
         }
     }
 )
