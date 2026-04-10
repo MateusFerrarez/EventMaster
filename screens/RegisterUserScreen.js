@@ -9,6 +9,9 @@ import InvalidName from "../err/InvalidName";
 import NegativeButton from "../components/NegativeButton";
 import screenStyles from "../styles/RegisterUserScreenStyles";
 
+import StorageService from "../services/StorageService";
+import { SafeAreaView } from "react-native-safe-area-context";
+
 export default function RegisterUserScreen({ navigation }) {
     // Var states
     const [email, setEmail] = useState('');
@@ -18,28 +21,31 @@ export default function RegisterUserScreen({ navigation }) {
     const nameRef = useRef(null);
     const emailRef = useRef(null);
 
-    const registerAction = () => {
+    const registerAction = async () => {
         try {
             if (name.length === 0) {
                 throw new InvalidName("Nome inválido!");
             }
 
             ValidateEmail(email);
+
+            await StorageService.getData(email);
+            await StorageService.saveData(email, name);
         } catch (error) {
             if (error instanceof InvalidEmail) {
                 Alert.alert("Alerta!", error.message)
                 emailRef.current.focus();
-            }
-
-            if (error instanceof InvalidName) {
+            } else if (error instanceof InvalidName) {
                 Alert.alert("Alerta!", error.message)
                 nameRef.current.focus();
+            } else {
+                Alert.alert("Alerta!", error.message)
             }
         }
     };
 
     return (
-        <View style={screenStyles.root}>
+        <SafeAreaView style={screenStyles.root}>
             <Text>Que bom que você está aqui!</Text>
             <Text>Preencha as seguintes informações e desfrute da melhor experiência!</Text>
 
@@ -59,6 +65,6 @@ export default function RegisterUserScreen({ navigation }) {
             <PositiveButton title="Registrar" onPress={registerAction} />
             <NegativeButton title="Voltar" onPress={() => navigation.goBack()} />
 
-        </View>
+        </SafeAreaView>
     )
 }
