@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native";
-import { GREEN_1, GREEN_2, GREEN_3 } from "../Colors";
+import { DARK_GREEN, GREEN_1, GREEN_2, GREEN_3 } from "../Colors";
 
 const eventCardStyles = StyleSheet.create(
     {
@@ -15,12 +15,12 @@ const eventCardStyles = StyleSheet.create(
         description: {
             fontSize: 15,
             fontWeight: 500,
-            color: GREEN_1
+            color: DARK_GREEN
         },
         description_text: {
             fontSize: 14,
             fontWeight: "normal",
-            color: GREEN_2
+            color: GREEN_1
         }
     }
 )

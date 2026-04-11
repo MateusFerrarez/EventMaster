@@ -29,7 +29,7 @@ export default function RegisterUserScreen({ navigation }) {
 
             ValidateEmail(email);
 
-            await StorageService.getData(email);
+            await StorageService.checkDuplicatedEmail(email);
             await StorageService.saveData(email, name);
         } catch (error) {
             if (error instanceof InvalidEmail) {

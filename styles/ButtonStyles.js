@@ -6,7 +6,8 @@ const buttonStyles = StyleSheet.create(
             backgroundColor: '#408A71',
             borderRadius: 5,
             padding: 10,
-            margin: 10,
+            marginBottom: 10,
+            width: 240
         },
         positive_text: {
             color: '#fff',
@@ -17,7 +18,8 @@ const buttonStyles = StyleSheet.create(
             backgroundColor: '#285A48',
             borderRadius: 5,
             padding: 10,
-            margin: 10,
+            marginBottom: 10,
+            width: 240,
         },
         negative_text: {
             color: '#fff',

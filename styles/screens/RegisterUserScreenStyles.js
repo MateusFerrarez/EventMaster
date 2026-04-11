@@ -7,6 +7,7 @@ const screenStyles = StyleSheet.create(
             backgroundColor: '#fff',
             paddingHorizontal: 20,
             justifyContent: 'center',
+            alignItems: 'center'
         }
     }
 )

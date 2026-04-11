@@ -9,7 +9,8 @@ const textInputStyles = StyleSheet.create(
             borderRadius: 5,
             padding: 10,
             fontWeight: 300,
-            margin: 10,
+            width: '100%',
+            marginVertical: 10,
         }
     }
 )
