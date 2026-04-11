@@ -1,4 +1,4 @@
-import { TextInput, View, Text, Alert } from "react-native";
+import { TextInput, Text, Alert } from "react-native";
 
 import textInputStyles from "../styles/TextInputStyles";
 import PositiveButton from "../components/PositiveButton";
@@ -7,7 +7,7 @@ import { ValidateEmail } from "../utils/EmailHandler";
 import InvalidEmail from "../err/InvalidEmail";
 import InvalidName from "../err/InvalidName";
 import NegativeButton from "../components/NegativeButton";
-import screenStyles from "../styles/RegisterUserScreenStyles";
+import screenStyles from "../styles/screens/RegisterUserScreenStyles";
 
 import StorageService from "../services/StorageService";
 import { SafeAreaView } from "react-native-safe-area-context";

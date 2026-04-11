@@ -1,21 +1,21 @@
-
 import { SafeAreaView, useSafeAreaInsets } from "react-native-safe-area-context";
-import homeScreenStyles from "../styles/HomeScreenStyles";
+import homeScreenStyles from "../styles/screens/HomeScreenStyles";
 import { useEffect, useState } from "react";
 import { View, Text, ActivityIndicator } from "react-native";
 import ApiService from "../services/ApiService";
 import { FlatList } from "react-native-gesture-handler";
 import EventCard from "../components/EventCard";
 import { GREEN_3 } from "../styles/Colors";
-
+import EventDialog from "../dialogs/EventDialog";
 
 export default function HomeScreen({ navigation, route }) {
     const userName = route.params?.userName;
     const [events, setEvents] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [showDialog, setShowDialog] = useState(false);
 
     const EventCardItem = ({ event }) => (
-        <EventCard event={event} />
+        <EventCard event={event} onPress={() => setShowDialog(true)} />
     );
 
     const eventList = [
@@ -46,10 +46,13 @@ export default function HomeScreen({ navigation, route }) {
 
     return (
         <SafeAreaView style={homeScreenStyles.mainContainer}>
+            {showDialog
+                ? <EventDialog event={null} showDialog={showDialog} onClose={() => setShowDialog(false)} />
+                : null
+            }
             <View style={homeScreenStyles.header}>
                 <Text style={homeScreenStyles.title_header}>Seja bem-vindo {userName}</Text>
             </View>
-
             <View style={{ paddingBottom: insets.bottom }}>
                 {loading ? (
                     <ActivityIndicator size="large" color={GREEN_3} />

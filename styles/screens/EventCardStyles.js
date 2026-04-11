@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native";
-import { GREEN_1, GREEN_2, GREEN_3 } from "../styles/Colors";
+import { GREEN_1, GREEN_2, GREEN_3 } from "../Colors";
 
 const eventCardStyles = StyleSheet.create(
     {

@@ -1,5 +1,5 @@
 import { View, Text, TouchableOpacity } from "react-native";
-import eventCardStyles from "../styles/EventCardStyles";
+import eventCardStyles from "../styles/screens/EventCardStyles";
 
 export default function EventCard({ event, onPress }) {
     const formatedDate = new Date(event.eventDate);
