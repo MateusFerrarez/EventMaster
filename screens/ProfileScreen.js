@@ -7,17 +7,15 @@ import StorageService from "../services/StorageService";
 import { GREEN_3 } from "../styles/Colors";
 import QRCode from 'react-native-qrcode-svg';
 
-// Builds a deterministic, minimal payload for the QR code.
-// Keeping the payload small improves QR readability at lower resolutions.
 const buildQRPayload = ({ event, email, userName }) => {
     const confirmedAt = new Date();
 
     return JSON.stringify({
-        participantName: userName,
+        nomeParticipante: userName,
         email,
-        eventName: event.name,          // adjust key to match your Event model
-        confirmationDate: confirmedAt.toLocaleDateString('pt-BR'),
-        confirmationTime: confirmedAt.toLocaleTimeString('pt-BR', {
+        nomeEvento: event.description,
+        dataConfirmacao: confirmedAt.toLocaleDateString('pt-BR'),
+        horarioConfirmacao: confirmedAt.toLocaleTimeString('pt-BR', {
             hour: '2-digit',
             minute: '2-digit',
             second: '2-digit',
@@ -32,10 +30,9 @@ export default function ProfileScreen({ route }) {
     const [loading, setLoading] = useState(true);
     const [showQRModal, setShowQRModal] = useState(false);
     const [selectedEvent, setSelectedEvent] = useState(null);
-    const [qrPayload, setQrPayload] = useState(null);   // ← derived, never stale
+    const [qrPayload, setQrPayload] = useState(null); 
     const [userName, setUserName] = useState('');
 
-    // Compute the QR payload once when the modal opens, not on every render.
     const showQRModalForEvent = useCallback((event) => {
         setSelectedEvent(event);
         setQrPayload(buildQRPayload({ event, email, userName }));
